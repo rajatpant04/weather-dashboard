@@ -1,5 +1,15 @@
 import { Droplet, Wind, Sun, Moon, Eye, Compass } from 'lucide-react';
-import { celsiusToFahrenheit, kmhToMph, metersToMiles, hPaToInHg, getWeatherInfo, getWindDirection, getAQILabel, getUS_AQILabel } from '../utils/helpers';
+import {
+  celsiusToFahrenheit,
+  kmhToMph,
+  metersToMiles,
+  hPaToInHg,
+  getWeatherInfo,
+  getWindDirection,
+  getAQILabel,
+  getUS_AQILabel,
+  formatTime,
+} from "../utils/helpers";
 
 export const CurrentWeather = ({ weather, timezone, unit = 'c', airQuality }) => {
   if (!weather?.current) return null;
@@ -58,18 +68,18 @@ export const CurrentWeather = ({ weather, timezone, unit = 'c', airQuality }) =>
               value={`${current.relative_humidity_2m}%`}
             />
             <WeatherDetail
-              icon={<FiWind className="w-6 h-6 text-green-400" />}
+              icon={<Wind className="w-6 h-6 text-green-400" />}
               label="Wind"
               value={`${windSpeed} ${speedUnit}`}
               subValue={`${getWindDirection(current.wind_direction_10m)} • Gusts: ${unit === 'f' ? kmhToMph(current.wind_gusts_10m) : current.wind_gusts_10m} ${speedUnit}`}
             />
             <WeatherDetail
-              icon={<FiEye className="w-6 h-6 text-purple-400" />}
+              icon={<Eye className="w-6 h-6 text-purple-400" />}
               label="Visibility"
               value={`${visibility} ${visUnit}`}
             />
             <WeatherDetail
-              icon={<FiSun className="w-6 h-6 text-yellow-400" />}
+              icon={<Sun className="w-6 h-6 text-yellow-400" />}
               label="Pressure"
               value={`${pressure} ${presUnit}`}
             />
@@ -80,7 +90,7 @@ export const CurrentWeather = ({ weather, timezone, unit = 'c', airQuality }) =>
               {sunrise && (
                 <div className="flex items-center gap-3 text-white/80">
                   <div className="w-10 h-10 rounded-xl bg-yellow-500/20 flex items-center justify-center">
-                    <FiSun className="w-5 h-5 text-yellow-400" />
+                    <Sun className="w-5 h-5 text-yellow-400" />
                   </div>
                   <div>
                     <p className="text-xs text-white/50 uppercase tracking-wide">Sunrise</p>
@@ -91,7 +101,7 @@ export const CurrentWeather = ({ weather, timezone, unit = 'c', airQuality }) =>
               {sunset && (
                 <div className="flex items-center gap-3 text-white/80">
                   <div className="w-10 h-10 rounded-xl bg-orange-500/20 flex items-center justify-center">
-                    <FiMoon className="w-5 h-5 text-orange-400 rotate-90" />
+                    <Moon className="w-5 h-5 text-orange-400 rotate-90" />
                   </div>
                   <div>
                     <p className="text-xs text-white/50 uppercase tracking-wide">Sunset</p>
@@ -105,7 +115,7 @@ export const CurrentWeather = ({ weather, timezone, unit = 'c', airQuality }) =>
           {airQuality?.current && (
             <div className="mt-6 px-6 pt-6 border-t border-white/10">
               <div className="flex items-center gap-2 text-white/60 mb-3">
-                <FiCompass className="w-4 h-4" />
+                <Compass className="w-4 h-4" />
                 <span className="text-sm font-medium">Air Quality Index</span>
               </div>
               <div className="flex items-center gap-4 flex-wrap">
