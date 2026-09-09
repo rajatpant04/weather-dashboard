@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
-import { Sun, Moon, Cloud, Zap, Star } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { Sun, Moon, Cloud, Zap, Star, Droplet } from 'lucide-react';
 
 const weatherBackgroundStyles = {
   Clear: {

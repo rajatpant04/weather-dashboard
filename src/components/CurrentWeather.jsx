@@ -53,7 +53,7 @@ export const CurrentWeather = ({ weather, timezone, unit = 'c', airQuality }) =>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-6 py-6">
             <WeatherDetail
-              icon={<FiDroplet className="w-6 h-6 text-blue-400" />}
+              icon={<Droplet className="w-6 h-6 text-blue-400" />}
               label="Humidity"
               value={`${current.relative_humidity_2m}%`}
             />
