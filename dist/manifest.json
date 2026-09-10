@@ -1,0 +1,37 @@
+{
+  "name": "WeatherDash",
+  "short_name": "WeatherDash",
+  "description": "Modern weather dashboard for India with forecasts, alerts, and air quality",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f0f9ff",
+  "theme_color": "#0ea5e9",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["weather", "utilities"],
+  "shortcuts": [
+    {
+      "name": "Search City",
+      "short_name": "Search",
+      "description": "Search for a city",
+      "url": "/?search=true",
+      "icons": [{ "src": "/vite.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "My Location",
+      "short_name": "Location",
+      "description": "Weather at my location",
+      "url": "/?location=true",
+      "icons": [{ "src": "/vite.svg", "sizes": "192x192" }]
+    }
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false
+}

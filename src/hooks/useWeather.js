@@ -65,13 +65,17 @@ export const useWeather = () => {
         fetchAirQuality(latitude, longitude),
       ]);
 
-      const formattedCityName = cityName || `${selectedCity?.name || ''}, ${selectedCity?.admin1 || ''}, ${selectedCity?.country || ''}`;
+      const formattedCityName = cityName;
 
       setWeather(weatherData);
       setAirQuality(airQualityData);
 
       if (cityName) {
-        const cityData = { latitude, longitude, name: formattedCityName, admin1: selectedCity?.admin1, country: selectedCity?.country };
+        const cityData = {
+  latitude,
+  longitude,
+  name: formattedCityName
+};
         addToHistory(cityData);
         saveToLocalStorage(LAST_CITY_KEY, cityData);
       }
@@ -82,7 +86,7 @@ export const useWeather = () => {
     } finally {
       setLoading(false);
     }
-  }, [addToHistory, selectedCity]);
+  }, [addToHistory]);
 
   const fetchByCity = useCallback(async (city) => {
     setSelectedCity(city);
@@ -150,14 +154,15 @@ export const useWeather = () => {
   }, [fetchWeather]);
 
   useEffect(() => {
-    const lastCity = loadFromLocalStorage(LAST_CITY_KEY);
-    if (lastCity) {
-      setSelectedCity(lastCity);
-      fetchWeather(lastCity.latitude, lastCity.longitude, lastCity.name);
-    } else {
-      fetchCurrentLocation();
-    }
-  }, [fetchWeather]);
+  const lastCity = loadFromLocalStorage(LAST_CITY_KEY);
+
+  if (lastCity) {
+    setSelectedCity(lastCity);
+    fetchWeather(lastCity.latitude, lastCity.longitude, lastCity.name);
+  } else {
+    fetchCurrentLocation();
+  }
+}, [fetchWeather, fetchCurrentLocation]);
 
   return {
     weather,
