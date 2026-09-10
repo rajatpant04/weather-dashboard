@@ -2,7 +2,7 @@ const BASE_URL = 'https://api.open-meteo.com/v1/forecast';
 const GEOCODING_URL = 'https://geocoding-api.open-meteo.com/v1/search';
 const AIR_QUALITY_URL = 'https://air-quality-api.open-meteo.com/v1/air-quality';
 
-const fetchWithTimeout = async (url, options = {}, timeout = 15000) => {
+const fetchWithTimeout = async (url, options = {}, timeout = 30000) => {
   const controller = new AbortController();
   const id = setTimeout(() => controller.abort(), timeout);
 
